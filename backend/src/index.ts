@@ -1,10 +1,11 @@
-import { Hono } from 'hono'
-import { trpcServer } from '@hono/trpc-server' 
-import { appRouter } from './trpc'
+import { trpcServer } from '@hono/trpc-server'
+import { appTRPCRouter } from './trpc/router'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
+import authRouter from './routes/auth'
+import { createRouter } from './lib/router'
 
-const app = new Hono()
+const app = createRouter()
 
 app.use(logger())
 
@@ -13,7 +14,7 @@ app.use(cors())
 app.use(
   '/trpc/*',
   trpcServer({
-    router: appRouter,
+    router: appTRPCRouter,
   })
 )
 
@@ -21,7 +22,13 @@ app.get('/health', (c) => {
   return c.text('Ok')
 })
 
-export default { 
-  port: 8000, 
-  fetch: app.fetch, 
+const routes = [authRouter] as const;
+
+for (const route of routes) {
+  app.basePath("/api").route("/", route);
+}
+
+export default {
+  port: 8000,
+  fetch: app.fetch,
 } 
