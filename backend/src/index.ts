@@ -9,7 +9,26 @@ const app = createRouter()
 
 app.use(logger())
 
-app.use(cors())
+app.use("*", (c, next) => {
+  if (!c.req.url.startsWith('/api/auth')) {
+    return cors()(c, next);
+  }
+  
+  return next();
+})
+
+
+app.use(
+  "/api/auth/*", 
+  cors({
+    origin: "http://localhost:5173", 
+    allowHeaders: ["Content-Type", "Authorization"],
+    allowMethods: ["POST", "GET", "OPTIONS"],
+    exposeHeaders: ["Content-Length"],
+    maxAge: 600,
+    credentials: true,
+  }),
+);
 
 app.use(
   '/trpc/*',
@@ -25,6 +44,7 @@ app.get('/health', (c) => {
 const routes = [authRouter] as const;
 
 for (const route of routes) {
+
   app.basePath("/api").route("/", route);
 }
 
