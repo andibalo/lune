@@ -4,9 +4,9 @@ import { Link } from "react-router";
 
 export const Navbar = () => {
     return (
-        <section className="py-4">
-            <div className="container mx-auto">
-                <nav className="flex items-center justify-between">
+        <section className="bg-background sticky top-0 z-50 flex w-full border-b h-(--header-height)">
+            <div className="container mx-auto ">
+                <nav className="h-full flex items-center justify-between">
                     <a
                         href="https://www.shadcnblocks.com"
                         className="flex items-center gap-2"
