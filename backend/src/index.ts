@@ -11,17 +11,24 @@ app.use(logger())
 
 app.use("*", (c, next) => {
   if (!c.req.url.startsWith('/api/auth')) {
-    return cors()(c, next);
+    return cors(
+      {
+        origin: "*",
+        allowHeaders: ["Origin", "Content-Length", "Content-Type", "Authorization"],
+        allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+        maxAge: 600,
+      }
+    )(c, next);
   }
-  
+
   return next();
 })
 
 
 app.use(
-  "/api/auth/*", 
+  "/api/auth/*",
   cors({
-    origin: "http://localhost:5173", 
+    origin: "http://localhost:5173",
     allowHeaders: ["Content-Type", "Authorization"],
     allowMethods: ["POST", "GET", "OPTIONS"],
     exposeHeaders: ["Content-Length"],
