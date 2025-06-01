@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@lune/backend",
   "scripts": {
     "dev": "bunx prisma generate && bun run --hot src/index.ts"
   },
@@ -7,7 +7,7 @@
     "@hono/trpc-server": "^0.3.4",
     "@hono/zod-validator": "^0.5.0",
     "@prisma/client": "^6.8.2",
-    "@trpc/client": "^11.1.2",
+    "@trpc/client": "^11.1.4",
     "@trpc/server": "^11.1.4",
     "better-auth": "^1.2.8",
     "hono": "^4.7.10"
@@ -16,5 +16,8 @@
     "@biomejs/biome": "1.9.4",
     "@types/bun": "latest",
     "prisma": "^6.8.2"
+  },
+  "exports": {
+    "./trpc/routes": "./src/trpc/router.ts"
   }
 }
