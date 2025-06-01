@@ -7,7 +7,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader
 } from "~/components/ui/sidebar"
 import { Button } from "~/components/ui/button";
@@ -17,123 +16,7 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "~/components/ui/radio-group"
-
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "#",
-
-    },
-    {
-      title: "Lifecycle",
-      url: "#",
-
-    },
-    {
-      title: "Analytics",
-      url: "#",
-
-    },
-    {
-      title: "Projects",
-      url: "#",
-
-    },
-    {
-      title: "Team",
-      url: "#",
-
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-
-    },
-    {
-      title: "Get Help",
-      url: "#",
-
-    },
-    {
-      title: "Search",
-      url: "#",
-
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-
-    },
-    {
-      name: "Reports",
-      url: "#",
-
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-
-    },
-  ],
-}
+import { Input } from "~/components/ui/input";
 
 const categoryData = [
   {
@@ -214,12 +97,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupContent>
-            <h4>Price</h4>
+            <h4 className="text-md mb-2">Price</h4>
+            <div className="flex flex-col gap-2">
+              <Input type="text" placeholder="Min"  />
+              <Input type="text" placeholder="Max"  />
+            </div>
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupContent>
-            <h4>Minimum Order</h4>
+            <h4 className="text-md mb-2">Minimum Order</h4>
+            <div className="flex flex-col gap-2">
+              <Input type="text" placeholder="5"  />
+            </div>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
