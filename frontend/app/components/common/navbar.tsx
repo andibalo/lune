@@ -5,10 +5,10 @@ import { Link } from "react-router";
 export const Navbar = () => {
     return (
         <section className="bg-background sticky top-0 z-50 flex w-full border-b h-(--header-height)">
-            <div className="container mx-auto ">
+            <div className="container mx-auto">
                 <nav className="h-full flex items-center justify-between">
-                    <a
-                        href="https://www.shadcnblocks.com"
+                    <Link 
+                        to="/"
                         className="flex items-center gap-2"
                     >
                         <img
@@ -19,7 +19,7 @@ export const Navbar = () => {
                         <span className="text-lg font-semibold tracking-tighter">
                             Lune
                         </span>
-                    </a>
+                    </Link>
                     <div className="hidden lg:flex flex-1 justify-center px-8">
                         <div className="relative w-full max-w-sm">
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
