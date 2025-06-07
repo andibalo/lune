@@ -3,7 +3,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "gen:react:web": "turbo gen workspace --copy react-web-base --type app"
   },
   "dependencies": {},
   "devDependencies": {
